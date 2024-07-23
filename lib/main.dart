@@ -16,10 +16,8 @@ class MyApp extends StatelessWidget {
       create: (context) => MyAppState(),
       child: MaterialApp(
         title: 'Namer App',
-        theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
-        ),
+        theme: ThemeData(primarySwatch: Colors.green),
+        debugShowCheckedModeBanner: false,
         home: MyHomePage(),
       ),
     );
@@ -33,13 +31,21 @@ class MyAppState extends ChangeNotifier {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
+    //var appState = context.watch<MyAppState>();
 
     return Scaffold(
-      body: Column(
+      body: Row(
         children: [
-          Text('GeoEscopio:'),  // ← Example change.
-          Text(appState.current.asLowerCase),
+          
+          // SidebarX(
+          //   controller: SidebarXController(selectedIndex: 0),
+          //   items: const [
+          //     SidebarXItem(icon: Icons.home, label: 'Home'),
+          //     SidebarXItem(icon: Icons.search, label: 'Search'),
+              
+          //   ],
+          // ),
+          
         ],
       ),
     );
