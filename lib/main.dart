@@ -1,149 +1,116 @@
 import 'package:flutter/material.dart';
+import 'routes/home_page.dart'; // Importa la página principal
+import 'routes/about.dart';     // Importa la nueva página 1
+import 'routes/colaboradores.dart';     // Importa la nueva página 2
+import 'routes/pluriversos.dart'; 
+import 'routes/proyecto.dart'; 
 
-void main() => runApp(const MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  static const appTitle = 'Geoescopio';
-
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: appTitle,
-      home: MyHomePage(title: appTitle),
+    return MaterialApp(
+      title: 'App con Sidebar',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MainScreen(), // Usa un nuevo widget MainScreen como la pantalla principal
+      routes: {
+        '/about': (context) => AboutPage(),
+        '/colaboradores': (context) => ColaboradoresPage(),
+        '/proyecto': (context) => ProyectoPage(),
+        '/pluriversos': (context) => PluriversosPage(),
+        
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
+class MainScreen extends StatefulWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  MainScreenState createState() => MainScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Acerca de ',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Proyecto',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Colaboradores ',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 4: Pluriversos Climaticos ',
-      style: optionStyle,
-    ),
-  ];
+class MainScreenState extends State<MainScreen> {
+  String _currentPage = '/'; // Ruta inicial
 
-  void _onItemTapped(int index) {
+  void _selectPage(String route) {
     setState(() {
-      _selectedIndex = index;
+      _currentPage = route;
     });
+    Navigator.of(context).pop(); // Cierra el Drawer después de navegar a una nueva página
   }
 
   @override
   Widget build(BuildContext context) {
+    Widget currentPage; // Widget para la página actual
+
+    switch (_currentPage) {
+      case '/':
+        currentPage = HomePage(); // Página principal
+        break;
+      case '/about':
+        currentPage = AboutPage(); // Página Acerca de
+        break;
+      case '/colaboradores':
+        currentPage = ColaboradoresPage(); // Página de Colaboradores
+        break;
+      case '/proyecto':
+        currentPage = ProyectoPage(); // Página de Proyecto
+        break;
+      default:
+        currentPage = HomePage(); // Por defecto, mostrar la página principal
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
-        leading: Builder(
-          builder: (context) {
-            return IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            );
-          },
-        ),
-      ),
-      body: Center(
-        child: _widgetOptions[_selectedIndex],
+        title: Text('App con Sidebar'),
       ),
       drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
         child: ListView(
-          // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
+          children: <Widget>[
+            DrawerHeader(
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 0, 105, 30),
+                color: Colors.blue,
               ),
-              child: Text('GeoEscopio'),
+              child: Text(
+                'Menú',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
             ),
             ListTile(
-              title: const Text('Home'),
-              selected: _selectedIndex == 0,
+              title: Text('Inicio'),
               onTap: () {
-                // Update the state of the app
-                _onItemTapped(0);
-                // Then close the drawer
-                Navigator.pop(context);
+                _selectPage('/');
               },
             ),
             ListTile(
-              title: const Text('Acerca de'),
-              selected: _selectedIndex == 1,
+              title: Text('Acerca de'),
               onTap: () {
-                // Update the state of the app
-                _onItemTapped(1);
-                // Then close the drawer
-                Navigator.pop(context);
+                _selectPage('/about');
               },
             ),
             ListTile(
-              title: const Text('Proyecto'),
-              selected: _selectedIndex == 2,
+              title: Text('Colaboradores'),
               onTap: () {
-                // Update the state of the app
-                _onItemTapped(2);
-                // Then close the drawer
-                Navigator.pop(context);
+                _selectPage('/colaboradores');
               },
             ),
             ListTile(
-              title: const Text('Colaboradores'),
-              selected: _selectedIndex == 3,
+              title: Text('Proyecto'),
               onTap: () {
-                // Update the state of the app
-                _onItemTapped(3);
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Pluriversos Climaticos'),
-              selected: _selectedIndex == 4,
-              onTap: () {
-                // Update the state of the app
-                _onItemTapped(4);
-                // Then close the drawer
-                Navigator.pop(context);
+                _selectPage('/proyecto');
               },
             ),
           ],
         ),
       ),
+      body: currentPage, // Mostrar la página actual seleccionada
     );
   }
 }

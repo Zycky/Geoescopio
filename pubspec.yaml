@@ -8,6 +8,7 @@ dependencies:
   flutter:
     sdk: flutter
   sidebarx: ^0.17.1
+  url_launcher: ^6.0.12 
 
 dev_dependencies:
   flutter_test:
