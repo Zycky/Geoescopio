@@ -36,12 +36,12 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  MyHomePageState createState() => MyHomePageState();
 }
-const primaryColor = Color(0xFF6252DA);
-const canvasColor = Color(0xFF2E2E48);
-const scaffoldBackgroundColor = Color(0xFF7777B6);
-class _MyHomePageState extends State<MyHomePage> {
+const primaryColor = Color.fromARGB(255, 0, 0, 0);
+const canvasColor = Color.fromARGB(255, 43, 102, 35);
+const scaffoldBackgroundColor = Color.fromARGB(255, 255, 255, 255);
+class MyHomePageState extends State<MyHomePage> {
   final _controller = SidebarXController(selectedIndex: 0, extended: true);
   final _key = GlobalKey<ScaffoldState>();
   @override
@@ -71,23 +71,27 @@ class _MyHomePageState extends State<MyHomePage> {
                     switch(_controller.selectedIndex){
                       case 0: _key.currentState?.closeDrawer();
                       return Center(
-                        child: Text('Home',style: TextStyle(color: Colors.white,fontSize: 40),),
+                        child: Text('Home',style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0),fontSize: 40),),
                       );
                       case 1: _key.currentState?.closeDrawer();
                       return Center(
-                        child: Text('Search',style: TextStyle(color: Colors.white,fontSize: 40),),
+                        child: Text('About',style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0),fontSize: 40),),
                       );
                       case 2: _key.currentState?.closeDrawer();
                       return Center(
-                        child: Text('Settings',style: TextStyle(color: Colors.white,fontSize: 40),),
+                        child: Text('Colaboradores',style: TextStyle(color: Color.fromARGB(255, 0, 0, 0),fontSize: 40),),
                       );
                       case 3: _key.currentState?.closeDrawer();
                       return Center(
-                        child: Text('Theme',style: TextStyle(color: Colors.white,fontSize: 40),),
+                        child: Text('Pluriversos',style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0),fontSize: 40),),
+                      );
+                      case 4: _key.currentState?.closeDrawer();
+                      return Center(
+                        child: Text('Proyectos',style: TextStyle(color: Color.fromARGB(255, 0, 0, 0),fontSize: 40),),
                       );
                       default:
                         return Center(
-                          child: Text('Home',style: TextStyle(color: Colors.white,fontSize: 40),),
+                          child: Text('Home',style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0),fontSize: 40),),
                         );
                     }
                   },
@@ -139,9 +143,10 @@ class SideBarXExample extends StatelessWidget {
       },
       items: const [
         SidebarXItem(icon: Icons.home, label: 'Inicio'),
-        SidebarXItem(icon: Icons.book, label: 'About'),
+        SidebarXItem(icon: Icons.diversity_3, label: 'About'),
         SidebarXItem(icon: Icons.face, label: 'Colaboradores'),
         SidebarXItem(icon: Icons.public, label: 'Pluriversos'),
+        SidebarXItem(icon: Icons.wysiwyg, label: 'Proyectos'),
       ],
     );
   }
