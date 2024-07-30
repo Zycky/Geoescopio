@@ -38,6 +38,7 @@ flutter:
     - assets/img/ojo.png
     - assets/img/ojo1.png
     - assets/img/mapa1.png
+    - assets/img/pablo.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/.
