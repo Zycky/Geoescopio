@@ -4,34 +4,59 @@ import 'package:url_launcher/url_launcher.dart'; // Importa el paquete para lanz
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Inicio'),
-      ),
-      body: Center(
-        child: Column(
+    return BackgroundImage(
+      imagePath: 'assets/img/background.jpg', // Ruta a tu imagen de fondo
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Inicio'),
+        ),
+        backgroundColor: Colors.transparent, // Asegúrate de que el fondo del Scaffold sea transparente
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconButtonWithText(
-              icon: Icons.apps,
-              label: 'Aplicación 1',
-              onPressed: () {
-                _launchURL('https://tageo.maps.arcgis.com/apps/instant/slider/index.html?appid=8c8bb3b4c62b4707b93f64cd40bfb3dd'); // URL para Aplicación 1
-              },
+            // Imagen centrada en la parte superior
+            Container(
+              margin: EdgeInsets.only(top: 20), // Margen superior para la imagen
+              child: Image.asset(
+                '/img/ojo1.png', // Ruta a la imagen en la parte superior
+                width: 200, // Ajusta el tamaño de la imagen
+                height: 200, // Ajusta el tamaño de la imagen
+              ),
             ),
-            IconButtonWithText(
-              icon: Icons.apps,
-              label: 'Aplicación 2',
-              onPressed: () {
-                _launchURL('https://url-aplicacion-2.com'); // URL para Aplicación 2
-              },
-            ),
-            IconButtonWithText(
-              icon: Icons.apps,
-              label: 'Aplicación 3',
-              onPressed: () {
-                _launchURL('https://url-aplicacion-3.com'); // URL para Aplicación 3
-              },
+            Expanded(
+              child: Center(
+                child: Wrap(
+                  spacing: 20, // Espacio horizontal entre los elementos
+                  runSpacing: 20, // Espacio vertical entre las filas de elementos
+                  alignment: WrapAlignment.center, // Alineación horizontal
+                  children: [
+                    _buildIconButtonContainer(
+                      icon: Icons.apps,
+                      label: 'Aplicación 1',
+                      color: Colors.blueAccent, // Color de fondo del contenedor
+                      onPressed: () {
+                        _launchURL('https://tageo.maps.arcgis.com/apps/instant/slider/index.html?appid=8c8bb3b4c62b4707b93f64cd40bfb3dd'); // URL para Aplicación 1
+                      },
+                    ),
+                    _buildIconButtonContainer(
+                      icon: Icons.apps,
+                      label: 'Aplicación 2',
+                      color: Colors.greenAccent, // Color de fondo del contenedor
+                      onPressed: () {
+                        _launchURL('https://url-aplicacion-2.com'); // URL para Aplicación 2
+                      }, 
+                    ),
+                    _buildIconButtonContainer(
+                      icon: Icons.apps,
+                      label: 'Aplicación 3',
+                      color: Colors.redAccent, // Color de fondo del contenedor
+                      onPressed: () {
+                        _launchURL('https://url-aplicacion-3.com'); // URL para Aplicación 3
+                      }, 
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -39,9 +64,43 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  // Widget para construir un contenedor alrededor del IconButtonWithText
+  Widget _buildIconButtonContainer({
+    required IconData icon,
+    required String label,
+    required Color color,
+    required VoidCallback onPressed,
+  }) {
+    return Container(
+      padding: EdgeInsets.all(16), // Espaciado interno
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(8), // Esquinas redondeadas
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.3),
+            spreadRadius: 1,
+            blurRadius: 4,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(height: 8),
+          IconButtonWithText(
+            icon: icon,
+            label: label,
+            onPressed: onPressed,
+          ),
+        ],
+      ),
+    );
+  }
+
   // Función para lanzar una URL en el navegador
   void _launchURL(String url) async {
- 
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -66,6 +125,7 @@ class IconButtonWithText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         IconButton(
           icon: Icon(icon),
@@ -77,6 +137,28 @@ class IconButtonWithText extends StatelessWidget {
           label,
           style: TextStyle(fontSize: 16),
         ),
+      ],
+    );
+  }
+}
+
+// Widget para agregar una imagen de fondo
+class BackgroundImage extends StatelessWidget {
+  final Widget child;
+  final String imagePath;
+
+  const BackgroundImage({
+    Key? key,
+    required this.child,
+    required this.imagePath,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        child,
       ],
     );
   }
