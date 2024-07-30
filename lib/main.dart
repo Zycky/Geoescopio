@@ -71,38 +71,53 @@ class MyHomePageState extends State<MyHomePage> {
             body: BackgroundImage(
               imagePath: '/img/background.jpg', // Ruta a tu imagen
               child: Row(
-              children: [
-                if (!isSmallScreen) SideBarXExample(controller: _controller),
-                Expanded(
-                  child: AnimatedBuilder(
-                    animation: _controller,
-                    builder: (context, child) {
-                      switch (_controller.selectedIndex) {
-                        case 0:
-                          _key.currentState?.closeDrawer();
-                          return HomePage(); // Muestra la página principal
-                        case 1:
-                          _key.currentState?.closeDrawer();
-                          return AboutPage(); // Muestra la página About
-                        case 2:
-                          _key.currentState?.closeDrawer();
-                          return ColaboradoresPage(); // Muestra la página Colaboradores
-                        case 3:
-                          _key.currentState?.closeDrawer();
-                          return PluriversosPage(); // Muestra la página Pluriversos
-                        case 4:
-                          _key.currentState?.closeDrawer();
-                          return ProyectoPage(); // Muestra la página Proyectos
-                        default:
-                          return HomePage(); // Página predeterminada
-                      }
-                    },
+                children: [
+                  if (!isSmallScreen) SideBarXExample(controller: _controller),
+                  Expanded(
+                    child: AnimatedBuilder(
+                      animation: _controller,
+                      builder: (context, child) {
+                        switch (_controller.selectedIndex) {
+                          case 0:
+                            _key.currentState?.closeDrawer();
+                            return HomePage(); // Muestra la página principal
+                          case 1:
+                            _key.currentState?.closeDrawer();
+                            return AboutPage(); // Muestra la página About
+                          case 2:
+                            _key.currentState?.closeDrawer();
+                            return ColaboradoresPage(); // Muestra la página Colaboradores
+                          case 3:
+                            _key.currentState?.closeDrawer();
+                            return PluriversosPage(); // Muestra la página Pluriversos
+                          case 4:
+                            _key.currentState?.closeDrawer();
+                            return ProyectoPage(); // Muestra la página Proyectos
+                          default:
+                            return HomePage(); // Página predeterminada
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            bottomNavigationBar: BottomAppBar(
+              color: primaryColor,
+              child: Container(
+                padding: EdgeInsets.all(16),
+                child: Center(
+                  child: Text(
+                    'Pluriversos Climáticos 2024',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
-              ],
+              ),
             ),
-           )
-         );
+          );
         },
       ),
     );
@@ -137,11 +152,9 @@ class SideBarXExample extends StatelessWidget {
           Divider(color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.8), height: 1),
       headerBuilder: (context, extended) {
         return SizedBox(
-          
           height: 140,
           child: Center(
             child: ClipOval(
-              
               child: Image.asset(
                 '/img/pluriverso.png',
                 width: 130,
@@ -160,7 +173,6 @@ class SideBarXExample extends StatelessWidget {
         SidebarXItem(icon: Icons.wysiwyg, label: 'Proyectos'),
       ],
     );
-    
   }
 }
 
