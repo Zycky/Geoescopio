@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
                   children: [
                     _buildIconButtonContainer(
                       icon: Icons.apps,
-                      label: 'Aplicación 1',
+                      label: 'Memorias Climáticas',
                       color: Colors.blueAccent, // Color de fondo del contenedor
                       onPressed: () {
                         _launchURL('https://tageo.maps.arcgis.com/apps/instant/slider/index.html?appid=8c8bb3b4c62b4707b93f64cd40bfb3dd'); // URL para Aplicación 1
@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
                     ),
                     _buildIconButtonContainer(
                       icon: Icons.apps,
-                      label: 'Aplicación 2',
+                      label: 'Presentes Climáticos',
                       color: Colors.greenAccent, // Color de fondo del contenedor
                       onPressed: () {
                         _launchURL('https://url-aplicacion-2.com'); // URL para Aplicación 2
@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                     ),
                     _buildIconButtonContainer(
                       icon: Icons.apps,
-                      label: 'Aplicación 3',
+                      label: 'Futuros Climáticos',
                       color: Colors.redAccent, // Color de fondo del contenedor
                       onPressed: () {
                         _launchURL('https://url-aplicacion-3.com'); // URL para Aplicación 3
@@ -148,10 +148,10 @@ class BackgroundImage extends StatelessWidget {
   final String imagePath;
 
   const BackgroundImage({
-    Key? key,
+    super.key,
     required this.child,
     required this.imagePath,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

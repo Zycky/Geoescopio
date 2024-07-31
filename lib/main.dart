@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 import 'routes/home_page.dart'; // Importa la página principal
-import 'routes/about.dart';     // Importa la nueva página 1
-import 'routes/colaboradores.dart';     // Importa la nueva página 2
+import 'routes/acercade.dart';     // Importa la nueva página 1
+import 'routes/realizadores.dart';     // Importa la nueva página 2
 import 'routes/pluriversos.dart'; 
-import 'routes/proyecto.dart'; 
+import 'routes/mapeaaqui.dart'; 
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: scaffoldBackgroundColor,
         textTheme: const TextTheme(
           headlineSmall: TextStyle(
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: Color.fromARGB(255, 0, 0, 0),
             fontSize: 46,
             fontWeight: FontWeight.w800,
           ),
@@ -41,7 +41,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 const primaryColor = Color.fromARGB(255, 0, 0, 0);
-const canvasColor = Color.fromARGB(255, 43, 102, 35);
+const canvasColor = Color.fromARGB(255, 255, 255, 255);
 const scaffoldBackgroundColor = Color.fromARGB(0, 255, 255, 255);
 
 class MyHomePageState extends State<MyHomePage> {
@@ -70,33 +70,39 @@ class MyHomePageState extends State<MyHomePage> {
             drawer: SideBarXExample(controller: _controller),
             body: BackgroundImage(
               imagePath: '/img/background.jpg', // Ruta a tu imagen
-              child: Row(
+              child: Column(
                 children: [
-                  if (!isSmallScreen) SideBarXExample(controller: _controller),
                   Expanded(
-                    child: AnimatedBuilder(
-                      animation: _controller,
-                      builder: (context, child) {
-                        switch (_controller.selectedIndex) {
-                          case 0:
-                            _key.currentState?.closeDrawer();
-                            return HomePage(); // Muestra la página principal
-                          case 1:
-                            _key.currentState?.closeDrawer();
-                            return AboutPage(); // Muestra la página About
-                          case 2:
-                            _key.currentState?.closeDrawer();
-                            return ColaboradoresPage(); // Muestra la página Colaboradores
-                          case 3:
-                            _key.currentState?.closeDrawer();
-                            return PluriversosPage(); // Muestra la página Pluriversos
-                          case 4:
-                            _key.currentState?.closeDrawer();
-                            return ProyectoPage(); // Muestra la página Proyectos
-                          default:
-                            return HomePage(); // Página predeterminada
-                        }
-                      },
+                    child: Row(
+                      children: [
+                        if (!isSmallScreen) SideBarXExample(controller: _controller),
+                        Expanded(
+                          child: AnimatedBuilder(
+                            animation: _controller,
+                            builder: (context, child) {
+                              switch (_controller.selectedIndex) {
+                                case 0:
+                                  _key.currentState?.closeDrawer();
+                                  return HomePage(); // Muestra la página principal
+                                case 1:
+                                  _key.currentState?.closeDrawer();
+                                  return MapeaaquiPage(); // Muestra la página Mapea Aqui 
+                                case 2:
+                                  _key.currentState?.closeDrawer();
+                                  return AcercadePage(); // Muestra la página Acerca de
+                                case 3:
+                                  _key.currentState?.closeDrawer();
+                                  return PluriversosPage(); // Muestra la página Pluriversos
+                                case 4:
+                                  _key.currentState?.closeDrawer();
+                                  return RealizadoresPage(); // Muestra la página Realizadores
+                                default:
+                                  return HomePage(); // Página predeterminada
+                              }
+                            },
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -108,7 +114,7 @@ class MyHomePageState extends State<MyHomePage> {
                 padding: EdgeInsets.all(16),
                 child: Center(
                   child: Text(
-                    'Pluriversos Climáticos 2024',
+                    'PROYECTO ANILLOS ATE230072',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
@@ -125,9 +131,8 @@ class MyHomePageState extends State<MyHomePage> {
 }
 
 class SideBarXExample extends StatelessWidget {
-  const SideBarXExample({Key? key, required SidebarXController controller})
-      : _controller = controller,
-        super(key: key);
+  const SideBarXExample({super.key, required SidebarXController controller})
+      : _controller = controller;
   final SidebarXController _controller;
 
   @override
@@ -143,9 +148,9 @@ class SideBarXExample extends StatelessWidget {
           ),
         ),
         iconTheme: IconThemeData(
-          color: Colors.white,
+          color: Color.fromARGB(255, 30, 23, 23),
         ),
-        selectedTextStyle: const TextStyle(color: Colors.white),
+        selectedTextStyle: TextStyle(color: Color.fromARGB(255, 103, 36, 36)),
       ),
       extendedTheme: const SidebarXTheme(width: 250),
       footerDivider:
@@ -167,10 +172,10 @@ class SideBarXExample extends StatelessWidget {
       },
       items: const [
         SidebarXItem(icon: Icons.home, label: 'Inicio'),
-        SidebarXItem(icon: Icons.diversity_3, label: 'About'),
-        SidebarXItem(icon: Icons.face, label: 'Colaboradores'),
-        SidebarXItem(icon: Icons.public, label: 'Pluriversos'),
-        SidebarXItem(icon: Icons.wysiwyg, label: 'Proyectos'),
+        SidebarXItem(icon: Icons.public, label: 'Mapea aqui'),
+        SidebarXItem(icon: Icons.diversity_3, label: 'Acerca de'),
+        SidebarXItem(icon: Icons.map, label: 'Pluriversos'),
+        SidebarXItem(icon: Icons.groups, label: 'Realizadores'),
       ],
     );
   }
@@ -181,10 +186,10 @@ class BackgroundImage extends StatelessWidget {
   final String imagePath;
 
   const BackgroundImage({
-    Key? key,
+    super.key,
     required this.child,
     required this.imagePath,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
