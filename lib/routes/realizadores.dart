@@ -51,7 +51,7 @@ class RealizadoresPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Realizadoreses'),
+        title: Text('Realizadores'),
       ),
       body: ListView.builder(
         padding: EdgeInsets.all(8.0),

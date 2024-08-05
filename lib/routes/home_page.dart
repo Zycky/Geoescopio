@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(top: 20), // Margen superior para la imagen
               child: Image.asset(
-                '/img/ojo1.png', // Ruta a la imagen en la parte superior
+                '/img/eye1.png', // Ruta a la imagen en la parte superior
                 width: 200, // Ajusta el tamaño de la imagen
                 height: 200, // Ajusta el tamaño de la imagen
               ),
