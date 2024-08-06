@@ -11,6 +11,7 @@ class AcercadePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               // Fila de imágenes con detección de clic
+                 SizedBox(height: 40.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -50,10 +51,10 @@ class AcercadePage extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 100.0,
+                height: 50.0,
                 width: double.infinity,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 45.0),
+                  padding: const EdgeInsets.only(bottom: 10.0),
                 ),
               ),
               Text(
@@ -66,7 +67,7 @@ class AcercadePage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 10,
                 width: 150,
                 child: Divider(
                   color: Color.fromARGB(255, 8, 95, 33),
