@@ -114,7 +114,7 @@ class MyHomePageState extends State<MyHomePage> {
                 padding: EdgeInsets.all(16),
                 child: Center(
                   child: Text(
-                    'PROYECTO ANILLOS ATE230072',
+                    'PROYECTO  ANID ANILLOS ATE230072',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
