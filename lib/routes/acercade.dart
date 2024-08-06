@@ -16,35 +16,13 @@ class AcercadePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   GestureDetector(
-                    onTap: () => _showImageDialog(context, '/img/pluriverso.png'),
+                    onTap: () => _showImageDialog(context, '/img/logopluriversos.png'),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Image.asset(
-                        '/img/pluriverso.png',
-                        width: 100,
-                        height: 100,
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () => _showImageDialog(context, '/img/concursoanillos.png'),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Image.asset(
-                        '/img/concursoanillos.png',
-                        width: 100,
-                        height: 100,
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () => _showImageDialog(context, '/img/ministerio.png'),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Image.asset(
-                        '/img/ministerio.png',
-                        width: 100,
-                        height: 100,
+                        '/img/logopluriversos.png',
+                        width: 300,
+                        height: 300,
                       ),
                     ),
                   ),
@@ -58,7 +36,7 @@ class AcercadePage extends StatelessWidget {
                 ),
               ),
               Text(
-                'Pluriversos Climáticos - Proyecto Anillos',
+                '      Proyecto Anillos        Pluriversos Climaticos',                
                 style: TextStyle(
                   fontFamily: 'Pacifico',
                   color: Color.fromARGB(255, 0, 0, 0),
