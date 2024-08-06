@@ -161,7 +161,7 @@ class SideBarXExample extends StatelessWidget {
           child: Center(
             child: ClipOval(
               child: Image.asset(
-                '/img/pluriverso.png',
+                '/img/logopluriversos.png',
                 width: 130,
                 height: 130,
                 fit: BoxFit.cover,
