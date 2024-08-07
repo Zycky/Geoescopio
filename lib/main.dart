@@ -69,7 +69,7 @@ class MyHomePageState extends State<MyHomePage> {
                 : null,
             drawer: SideBarXExample(controller: _controller),
             body: BackgroundImage(
-              imagePath: '/img/background.jpg', // Ruta a tu imagen
+              imagePath: 'assets/img/background.jpg', // Ruta a tu imagen
               child: Column(
                 children: [
                   Expanded(
@@ -161,7 +161,7 @@ class SideBarXExample extends StatelessWidget {
           child: Center(
             child: ClipOval(
               child: Image.asset(
-                '/img/logopluriversos.png',
+                'assets/img/logopluriversos.png',
                 width: 130,
                 height: 130,
                 fit: BoxFit.cover,
