@@ -1,116 +1,207 @@
 import 'package:flutter/material.dart';
+import 'package:sidebarx/sidebarx.dart';
 import 'routes/home_page.dart'; // Importa la página principal
-import 'routes/about.dart';     // Importa la nueva página 1
-import 'routes/colaboradores.dart';     // Importa la nueva página 2
+import 'routes/acercade.dart';     // Importa la nueva página 1
+import 'routes/realizadores.dart';     // Importa la nueva página 2
 import 'routes/pluriversos.dart'; 
-import 'routes/proyecto.dart'; 
+import 'routes/mapeaaqui.dart'; 
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'App con Sidebar',
+      debugShowCheckedModeBanner: false,
+      title: 'Geoescopio',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: primaryColor,
+        canvasColor: canvasColor,
+        scaffoldBackgroundColor: scaffoldBackgroundColor,
+        textTheme: const TextTheme(
+          headlineSmall: TextStyle(
+            color: Color.fromARGB(255, 0, 0, 0),
+            fontSize: 46,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
       ),
-      home: MainScreen(), // Usa un nuevo widget MainScreen como la pantalla principal
-      routes: {
-        '/about': (context) => AboutPage(),
-        '/colaboradores': (context) => ColaboradoresPage(),
-        '/proyecto': (context) => ProyectoPage(),
-        '/pluriversos': (context) => PluriversosPage(),
-        
-      },
+      home: const MyHomePage(),
     );
   }
 }
 
-class MainScreen extends StatefulWidget {
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
   @override
-  MainScreenState createState() => MainScreenState();
+  MyHomePageState createState() => MyHomePageState();
 }
 
-class MainScreenState extends State<MainScreen> {
-  String _currentPage = '/'; // Ruta inicial
+const primaryColor = Color.fromARGB(255, 0, 0, 0);
+const canvasColor = Color.fromARGB(255, 255, 255, 255);
+const scaffoldBackgroundColor = Color.fromARGB(0, 255, 255, 255);
 
-  void _selectPage(String route) {
-    setState(() {
-      _currentPage = route;
-    });
-    Navigator.of(context).pop(); // Cierra el Drawer después de navegar a una nueva página
-  }
+class MyHomePageState extends State<MyHomePage> {
+  final _controller = SidebarXController(selectedIndex: 0, extended: true);
+  final _key = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    Widget currentPage; // Widget para la página actual
-
-    switch (_currentPage) {
-      case '/':
-        currentPage = HomePage(); // Página principal
-        break;
-      case '/about':
-        currentPage = AboutPage(); // Página Acerca de
-        break;
-      case '/colaboradores':
-        currentPage = ColaboradoresPage(); // Página de Colaboradores
-        break;
-      case '/proyecto':
-        currentPage = ProyectoPage(); // Página de Proyecto
-        break;
-      default:
-        currentPage = HomePage(); // Por defecto, mostrar la página principal
-    }
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('App con Sidebar'),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
+    return SafeArea(
+      child: Builder(
+        builder: (context) {
+          final isSmallScreen = MediaQuery.of(context).size.width < 600;
+          return Scaffold(
+            key: _key,
+            appBar: isSmallScreen
+                ? AppBar(
+                    title: Text('Geoescopio'),
+                    leading: IconButton(
+                      onPressed: () {
+                        _key.currentState?.openDrawer();
+                      },
+                      icon: Icon(Icons.menu),
+                    ),
+                  )
+                : null,
+            drawer: SideBarXExample(controller: _controller),
+            body: BackgroundImage(
+              imagePath: '/img/background.jpg', // Ruta a tu imagen
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Row(
+                      children: [
+                        if (!isSmallScreen) SideBarXExample(controller: _controller),
+                        Expanded(
+                          child: AnimatedBuilder(
+                            animation: _controller,
+                            builder: (context, child) {
+                              switch (_controller.selectedIndex) {
+                                case 0:
+                                  _key.currentState?.closeDrawer();
+                                  return HomePage(); // Muestra la página principal
+                                case 1:
+                                  _key.currentState?.closeDrawer();
+                                  return MapeaaquiPage(); // Muestra la página Mapea Aqui 
+                                case 2:
+                                  _key.currentState?.closeDrawer();
+                                  return AcercadePage(); // Muestra la página Acerca de
+                                case 3:
+                                  _key.currentState?.closeDrawer();
+                                  return PluriversosPage(); // Muestra la página Pluriversos
+                                case 4:
+                                  _key.currentState?.closeDrawer();
+                                  return RealizadoresPage(); // Muestra la página Realizadores
+                                default:
+                                  return HomePage(); // Página predeterminada
+                              }
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              child: Text(
-                'Menú',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
+            ),
+            bottomNavigationBar: BottomAppBar(
+              color: primaryColor,
+              child: Container(
+                padding: EdgeInsets.all(16),
+                child: Center(
+                  child: Text(
+                    'PROYECTO ANID ANILLOS ATE230072',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
               ),
             ),
-            ListTile(
-              title: Text('Inicio'),
-              onTap: () {
-                _selectPage('/');
-              },
-            ),
-            ListTile(
-              title: Text('Acerca de'),
-              onTap: () {
-                _selectPage('/about');
-              },
-            ),
-            ListTile(
-              title: Text('Colaboradores'),
-              onTap: () {
-                _selectPage('/colaboradores');
-              },
-            ),
-            ListTile(
-              title: Text('Proyecto'),
-              onTap: () {
-                _selectPage('/proyecto');
-              },
-            ),
-          ],
-        ),
+          );
+        },
       ),
-      body: currentPage, // Mostrar la página actual seleccionada
+    );
+  }
+}
+
+class SideBarXExample extends StatelessWidget {
+  const SideBarXExample({super.key, required SidebarXController controller})
+      : _controller = controller;
+  final SidebarXController _controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return SidebarX(
+      controller: _controller,
+      theme: const SidebarXTheme(
+        decoration: BoxDecoration(
+          color: canvasColor,
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20),
+            bottomRight: Radius.circular(20),
+          ),
+        ),
+        iconTheme: IconThemeData(
+          color: Color.fromARGB(255, 30, 23, 23),
+        ),
+        selectedTextStyle: TextStyle(color: Color.fromARGB(255, 103, 36, 36)),
+      ),
+      extendedTheme: const SidebarXTheme(width: 250),
+      footerDivider:
+          Divider(color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.8), height: 1),
+      headerBuilder: (context, extended) {
+        return SizedBox(
+          height: 140,
+          child: Center(
+            child: ClipOval(
+              child: Image.asset(
+                '/img/pluriverso.png',
+                width: 130,
+                height: 130,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        );
+      },
+      items: const [
+        SidebarXItem(icon: Icons.home, label: 'Inicio'),
+        SidebarXItem(icon: Icons.public, label: 'Mapea aqui'),
+        SidebarXItem(icon: Icons.diversity_3, label: 'Acerca de'),
+        SidebarXItem(icon: Icons.map, label: 'Pluriversos'),
+        SidebarXItem(icon: Icons.groups, label: 'Realizadores'),
+      ],
+    );
+  }
+}
+
+class BackgroundImage extends StatelessWidget {
+  final Widget child;
+  final String imagePath;
+
+  const BackgroundImage({
+    super.key,
+    required this.child,
+    required this.imagePath,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        Image.asset(
+          imagePath,
+          fit: BoxFit.cover,
+        ),
+        child,
+      ],
     );
   }
 }

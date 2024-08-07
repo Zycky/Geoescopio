@@ -9,6 +9,8 @@ dependencies:
     sdk: flutter
   sidebarx: ^0.17.1
   url_launcher: ^6.0.12 
+  concentric_transition: ^1.0.3
+  video_player: ^2.9.1
 
 dev_dependencies:
   flutter_test:
@@ -33,6 +35,18 @@ flutter:
   #  - images/a_dot_ham.jpeg
   assets:
     - assets/img/bgprueba.jpg
+    - assets/img/pluriverso.png
+    - assets/img/background.jpg
+    - assets/img/ojo.png
+    - assets/img/ojo1.png
+    - assets/img/mapa1.png
+    - assets/img/pablo.jpg
+    - assets/img/mapasatelital.jpg
+    - assets/img/eye1.png
+    - assets/img/ministerio.png
+    - assets/img/logopluriversos.png
+    - assets/img/concursoanillos.jpg
+    - assets/img/concursoanillos.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/.
