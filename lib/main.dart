@@ -184,7 +184,7 @@ class SideBarXExample extends StatelessWidget {
 class BackgroundImage extends StatelessWidget {
   final Widget child;
   final String imagePath;
-
+  
   const BackgroundImage({
     super.key,
     required this.child,
