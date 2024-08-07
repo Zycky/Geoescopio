@@ -16,7 +16,6 @@ class AcercadePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   GestureDetector(
-<<<<<<< HEAD
                     onTap: () => _showImageDialog(context, 'assets/img/pluriverso.png'),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -46,15 +45,6 @@ class AcercadePage extends StatelessWidget {
                         'assets/img/ministerio.png',
                         width: 100,
                         height: 100,
-=======
-                    onTap: () => _showImageDialog(context, '/img/logopluriversos.png'),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Image.asset(
-                        '/img/logopluriversos.png',
-                        width: 300,
-                        height: 300,
->>>>>>> 483c04c882d4527d3c0cae71de4617307772026c
                       ),
                     ),
                   ),
@@ -68,7 +58,7 @@ class AcercadePage extends StatelessWidget {
                 ),
               ),
               Text(
-                '      Proyecto Anillos        Pluriversos Climaticos',                
+                'Pluriversos Climáticos - Proyecto Anillos',
                 style: TextStyle(
                   fontFamily: 'Pacifico',
                   color: Color.fromARGB(255, 0, 0, 0),
