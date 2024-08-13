@@ -52,7 +52,7 @@ class PluriversosPage extends StatelessWidget {
         colors: pages.map((p) => p.bgColor).toList(),
         radius: screenWidth * 0.1,
         nextButtonBuilder: (context) => Padding(
-          padding: const EdgeInsets.only(left: 3), // visual center
+          padding: const EdgeInsets.only(left: 1), // visual center
           child: Icon(
             Icons.navigate_next,
             size: screenWidth * 0.1,
@@ -103,8 +103,8 @@ class _Page extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          padding: const EdgeInsets.all(16.0),
-          margin: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(10.0),
+          margin: const EdgeInsets.all(10.0),
           decoration:
               BoxDecoration(shape: BoxShape.circle, color: page.textColor),
           child: Icon(

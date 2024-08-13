@@ -108,21 +108,6 @@ class MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            bottomNavigationBar: BottomAppBar(
-              color: primaryColor,
-              child: Container(
-                padding: EdgeInsets.all(16),
-                child: Center(
-                  child: Text(
-                    'PROYECTO ANID ANILLOS ATE230072',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ),
-            ),
           );
         },
       ),
@@ -143,8 +128,8 @@ class SideBarXExample extends StatelessWidget {
         decoration: BoxDecoration(
           color: canvasColor,
           borderRadius: BorderRadius.only(
-            topRight: Radius.circular(20),
-            bottomRight: Radius.circular(20),
+            topRight: Radius.circular(0),
+            bottomRight: Radius.circular(0),
           ),
         ),
         iconTheme: IconThemeData(
@@ -157,16 +142,16 @@ class SideBarXExample extends StatelessWidget {
           Divider(color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.8), height: 1),
       headerBuilder: (context, extended) {
         return SizedBox(
-          height: 140,
+          height: 250,
           child: Center(
-            child: ClipOval(
+            
               child: Image.asset(
-                'assets/img/logopluriversos.png',
-                width: 130,
-                height: 130,
-                fit: BoxFit.cover,
+                'assets/img/pluriverso2.png',
+                width: 250,
+                height: 250,
+                
               ),
-            ),
+            
           ),
         );
       },

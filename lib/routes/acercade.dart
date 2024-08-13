@@ -27,11 +27,11 @@ class AcercadePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   GestureDetector(
-                    onTap: () => _showImageDialog(context, 'assets/img/logopluriversos.png'),
+                    onTap: () => _showImageDialog(context, 'assets/img/pluriverso2.png'),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Image.asset(
-                        'assets/img/logopluriversos.png',
+                        'assets/img/pluriverso2.png',
                         width: 100,
                         height: 100,
                       ),
