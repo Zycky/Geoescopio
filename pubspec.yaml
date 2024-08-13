@@ -46,7 +46,6 @@ flutter:
     - assets/img/ministerio.png
     - assets/img/logopluriversos.png
     - assets/img/concursoanillos.jpg
-    - assets/img/concursoanillos.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/.

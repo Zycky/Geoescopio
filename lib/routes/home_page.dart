@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart'; // Importa el paquete para lanzar URLs
 
-
-
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -20,7 +18,7 @@ class HomePage extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(top: 20), // Margen superior para la imagen
               child: Image.asset(
-                '/img/eye1.png', // Ruta a la imagen en la parte superior
+                'assets/img/eye1.png', // Ruta a la imagen en la parte superior
                 width: 200, // Ajusta el tamaño de la imagen
                 height: 200, // Ajusta el tamaño de la imagen
               ),
@@ -45,16 +43,16 @@ class HomePage extends StatelessWidget {
                       label: 'Presentes Climáticos',
                       color: Colors.greenAccent, // Color de fondo del contenedor
                       onPressed: () {
-                        _launchURL('https://url-aplicacion-2.com'); // URL para Aplicación 2
-                      }, 
+                        _launchURL('https://google.com'); // URL para Aplicación 2
+                      },
                     ),
                     _buildIconButtonContainer(
                       icon: Icons.apps,
                       label: 'Futuros Climáticos',
                       color: Colors.redAccent, // Color de fondo del contenedor
                       onPressed: () {
-                        _launchURL('https://url-aplicacion-3.com'); // URL para Aplicación 3
-                      }, 
+                        _launchURL('https://google.com'); // URL para Aplicación 3
+                      },
                     ),
                   ],
                 ),
@@ -103,10 +101,11 @@ class HomePage extends StatelessWidget {
 
   // Función para lanzar una URL en el navegador
   void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
     } else {
-      throw 'No se pudo lanzar $url';
+      throw 'No se pudo abrir la URL: $url';
     }
   }
 }
@@ -160,6 +159,13 @@ class BackgroundImage extends StatelessWidget {
     return Stack(
       fit: StackFit.expand,
       children: [
+        // Imagen de fondo
+        Positioned.fill(
+          child: Image.asset(
+            imagePath,
+            fit: BoxFit.cover,
+          ),
+        ),
         child,
       ],
     );

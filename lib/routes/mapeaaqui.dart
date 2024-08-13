@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart'; // Asegúrate de agregar esta dependencia en pubspec.yaml
 
 class MapeaaquiPage extends StatelessWidget {
+
   // Método para abrir un enlace en el navegador
-  void _launchURL() async {
-    const url = 'https://www.ejemplo.com'; // Reemplaza con tu enlace
-    if (await canLaunch(url)) {
-      await launch(url);
+    void _launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
     } else {
-      throw 'No se pudo abrir el enlace $url';
+      throw 'No se pudo abrir la URL: $url';
     }
   }
 
@@ -30,7 +31,7 @@ class MapeaaquiPage extends StatelessWidget {
               // Imagen a la izquierda
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0), // Espacio horizontal alrededor de cada imagen
-                child: Image.network(
+                child: Image.asset(
                   'assets/img/mapasatelital.jpg', // Reemplaza con la URL de tu imagen
                   width: 280,
                   height: 250,
@@ -55,7 +56,7 @@ class MapeaaquiPage extends StatelessWidget {
           SizedBox(height: 16.0), // Espacio entre el texto y el botón
           // Botón que redirige a un enlace
           ElevatedButton(
-            onPressed: _launchURL,
+            onPressed: () => _launchURL('https://www.pluriversosclimaticos.cl'),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange, // Cambia el color del botón aquí
               padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
