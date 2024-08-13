@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AcercadePage extends StatelessWidget {
+  // Método para abrir una URL
+  void _launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'No se pudo abrir la URL: $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,38 +22,16 @@ class AcercadePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               // Fila de imágenes con detección de clic
-                 SizedBox(height: 40.0),
+              SizedBox(height: 40.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   GestureDetector(
-                    onTap: () => _showImageDialog(context, 'assets/img/pluriverso.png'),
+                    onTap: () => _showImageDialog(context, 'assets/img/logopluriversos.png'),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Image.asset(
-                        '/img/pluriverso.png',
-                        width: 100,
-                        height: 100,
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () => _showImageDialog(context, 'assets/img/concursoanillos.png'),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Image.asset(
-                        'assets/img/concursoanillos.png',
-                        width: 100,
-                        height: 100,
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () => _showImageDialog(context, '/img/ministerio.png'),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Image.asset(
-                        'assets/img/ministerio.png',
+                        'assets/img/logopluriversos.png',
                         width: 100,
                         height: 100,
                       ),
@@ -86,6 +75,15 @@ class AcercadePage extends StatelessWidget {
                     ),
                   ),
                 ),
+              ),
+              SizedBox(height: 20.0),
+              ElevatedButton(
+                onPressed: () => _launchURL('https://pluriversosclimaticos.cl'), // Reemplaza con la URL deseada
+                child: Text('Visita pluriversos'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orange, // Cambia el color del botón aquí
+                  padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+            )
               ),
             ],
           ),
