@@ -1,6 +1,6 @@
 {
-    "name": "geoescopio",
-    "short_name": "geoescopio",
+    "name": "Geoescopio",
+    "short_name": "Geoescopio",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
