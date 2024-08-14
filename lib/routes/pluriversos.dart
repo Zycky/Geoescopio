@@ -2,14 +2,12 @@ import 'package:concentric_transition/concentric_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
 class PageData {
   final String? title;
- 
   final Color bgColor;
   final Color textColor;
   final String? videoUrl; // URL del video de YouTube
-  final String? imagePath; // URL de la imagen
+  final String? imagePath; // Ruta de la imagen
 
   const PageData({
     this.title,
@@ -19,7 +17,6 @@ class PageData {
     this.imagePath,
   });
 }
-
 
 class PluriversosPage extends StatelessWidget {
   const PluriversosPage({super.key});
@@ -34,14 +31,7 @@ class PluriversosPage extends StatelessWidget {
         nextButtonBuilder: (context) => Padding(
           padding: const EdgeInsets.only(left: 1), // visual center
         ),
-        // enable itemcount to disable infinite scroll
-        // itemCount: pages.length,
-        // opacityFactor: 1.0,
-        // scaleFactor: 0.1,
         verticalPosition: 0.7,
-        // direction: Axis.vertical,
-        // itemCount: pages.length,
-        //physics: NeverScrollableScrollPhysics(),
         itemBuilder: (index) {
           final page = pages[index % pages.length];
           return SafeArea(
@@ -55,7 +45,6 @@ class PluriversosPage extends StatelessWidget {
 
 final pages = [
   const PageData(
-    
     title: "Colaboración en Iniciativas Regenerativas.",
     bgColor: Color.fromARGB(255, 255, 255, 255),
     textColor: Color.fromARGB(255, 0, 0, 0),
@@ -63,7 +52,6 @@ final pages = [
     imagePath: "assets/img/iniciativas_regenerativas.png",
   ),
   const PageData(
-    
     title: "Pequeñas manos y pequeñas lombrices mejoran el clima.",
     bgColor: Color.fromARGB(255, 255, 255, 255),
     textColor: Color.fromARGB(255, 0, 0, 0),
@@ -72,6 +60,7 @@ final pages = [
   ),
   // Añadir más páginas según sea necesario
 ];
+
 class _Page extends StatelessWidget {
   final PageData page;
 
@@ -105,14 +94,14 @@ class _Page extends StatelessWidget {
               color: page.textColor,
             ),
             child: page.imagePath != null
-                ? Image.network(
+                ? Image.asset(
                     page.imagePath!,
                     width: screenHeight * 0.3,
                     height: screenHeight * 0.3,
                     fit: BoxFit.cover,
                   )
-                    : SizedBox.shrink(), // Añadir un widget de sustitución si no hay imagePath
-                  ),
+                : SizedBox.shrink(), // Añadir un widget de sustitución si no hay imagePath
+          ),
           Text(
             page.title ?? "",
             style: TextStyle(

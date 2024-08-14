@@ -27,12 +27,12 @@ class HomePage extends StatelessWidget {
               child: Center(
                 child: Wrap(
                   spacing: 20, // Espacio horizontal entre los elementos
-                  runSpacing: 5, // Espacio vertical entre las filas de elementos
+                  runSpacing: 10, // Espacio vertical entre las filas de elementos
                   alignment: WrapAlignment.center, // Alineación horizontal
                   children: [
                     _buildImageButton(
                       imagePath: 'assets/img/memorias-climaticas.png', // Ruta a la imagen para Aplicación 1
-                      label: 'Memorias\nClimaticas',
+                      label: 'Memorias\nClimáticas',
                       color: const Color.fromARGB(0, 68, 137, 255), // Color de fondo del contenedor
                       url: 'https://tageo.maps.arcgis.com/apps/instant/slider/index.html?appid=8c8bb3b4c62b4707b93f64cd40bfb3dd', // URL para Aplicación 1
                     ),
@@ -81,23 +81,26 @@ class HomePage extends StatelessWidget {
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           GestureDetector(
             onTap: () => _launchURL(url), // Abre la URL cuando se toca la imagen
             child: Image.asset(
               imagePath,
-              width: 160, // Ajusta el tamaño de la imagen
-              height: 160, // Ajusta el tamaño de la imagen
+              width: 140, // Ajusta el tamaño de la imagen
+              height: 140, // Ajusta el tamaño de la imagen
             ),
           ),
-          SizedBox(height: 5),
+          SizedBox(height: 1), // Espacio entre la imagen y el texto
           Text(
             label,
+            textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 16,
               color: Colors.white,
               fontWeight: FontWeight.bold
-              ),
+            ),
           ),
         ],
       ),
