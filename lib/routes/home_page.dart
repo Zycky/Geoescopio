@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
               child: Center(
                 child: Wrap(
                   spacing: 20, // Espacio horizontal entre los elementos
-                  runSpacing: 20, // Espacio vertical entre las filas de elementos
+                  runSpacing: 5, // Espacio vertical entre las filas de elementos
                   alignment: WrapAlignment.center, // Alineación horizontal
                   children: [
                     _buildImageButton(
@@ -90,7 +90,7 @@ class HomePage extends StatelessWidget {
               height: 160, // Ajusta el tamaño de la imagen
             ),
           ),
-          SizedBox(height: 8),
+          SizedBox(height: 5),
           Text(
             label,
             style: TextStyle(

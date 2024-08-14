@@ -13,7 +13,6 @@ class PageData {
 
   const PageData({
     this.title,
-    
     this.bgColor = Colors.white,
     this.textColor = Colors.black,
     this.videoUrl,
