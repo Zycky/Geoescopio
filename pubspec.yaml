@@ -52,6 +52,9 @@ flutter:
     - assets/img/logopluriversos.png
     - assets/img/concursoanillos.jpg
     - assets/img/pluriverso2.png
+    - assets/img/memorias-climaticas.png
+    - assets/img/presentes-climaticos.png
+    - assets/img/futuros-climaticos.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/.

@@ -30,29 +30,23 @@ class HomePage extends StatelessWidget {
                   runSpacing: 20, // Espacio vertical entre las filas de elementos
                   alignment: WrapAlignment.center, // Alineación horizontal
                   children: [
-                    _buildIconButtonContainer(
-                      icon: Icons.apps,
+                    _buildImageButton(
+                      imagePath: 'assets/img/memorias-climaticas.png', // Ruta a la imagen para Aplicación 1
                       label: 'Memorias Climáticas',
-                      color: Colors.blueAccent, // Color de fondo del contenedor
-                      onPressed: () {
-                        _launchURL('https://tageo.maps.arcgis.com/apps/instant/slider/index.html?appid=8c8bb3b4c62b4707b93f64cd40bfb3dd'); // URL para Aplicación 1
-                      },
+                      color: const Color.fromARGB(0, 68, 137, 255), // Color de fondo del contenedor
+                      url: 'https://tageo.maps.arcgis.com/apps/instant/slider/index.html?appid=8c8bb3b4c62b4707b93f64cd40bfb3dd', // URL para Aplicación 1
                     ),
-                    _buildIconButtonContainer(
-                      icon: Icons.apps,
+                    _buildImageButton(
+                      imagePath: 'assets/img/presentes-climaticos.png', // Ruta a la imagen para Aplicación 2
                       label: 'Presentes Climáticos',
-                      color: Colors.greenAccent, // Color de fondo del contenedor
-                      onPressed: () {
-                        _launchURL('https://google.com'); // URL para Aplicación 2
-                      },
+                      color: const Color.fromARGB(0, 105, 240, 175), // Color de fondo del contenedor
+                      url: 'https://google.com', // URL para Aplicación 2
                     ),
-                    _buildIconButtonContainer(
-                      icon: Icons.apps,
+                    _buildImageButton(
+                      imagePath: 'assets/img/futuros-climaticos.png', // Ruta a la imagen para Aplicación 3
                       label: 'Futuros Climáticos',
-                      color: Colors.redAccent, // Color de fondo del contenedor
-                      onPressed: () {
-                        _launchURL('https://google.com'); // URL para Aplicación 3
-                      },
+                      color: const Color.fromARGB(0, 255, 82, 82), // Color de fondo del contenedor
+                      url: 'https://google.com', // URL para Aplicación 3
                     ),
                   ],
                 ),
@@ -64,12 +58,12 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // Widget para construir un contenedor alrededor del IconButtonWithText
-  Widget _buildIconButtonContainer({
-    required IconData icon,
+  // Widget para construir un contenedor alrededor de una imagen con hipervínculo
+  Widget _buildImageButton({
+    required String imagePath,
     required String label,
     required Color color,
-    required VoidCallback onPressed,
+    required String url,
   }) {
     return Container(
       padding: EdgeInsets.all(16), // Espaciado interno
@@ -88,11 +82,22 @@ class HomePage extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          GestureDetector(
+            onTap: () => _launchURL(url), // Abre la URL cuando se toca la imagen
+            child: Image.asset(
+              imagePath,
+              width: 150, // Ajusta el tamaño de la imagen
+              height: 150, // Ajusta el tamaño de la imagen
+            ),
+          ),
           SizedBox(height: 8),
-          IconButtonWithText(
-            icon: icon,
-            label: label,
-            onPressed: onPressed,
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.white,
+              fontWeight: FontWeight.bold
+              ),
           ),
         ],
       ),
@@ -107,39 +112,6 @@ class HomePage extends StatelessWidget {
     } else {
       throw 'No se pudo abrir la URL: $url';
     }
-  }
-}
-
-// Widget personalizado para IconButton con texto debajo
-class IconButtonWithText extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final VoidCallback onPressed;
-
-  const IconButtonWithText({
-    super.key,
-    required this.icon,
-    required this.label,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        IconButton(
-          icon: Icon(icon),
-          onPressed: onPressed,
-          iconSize: 64,
-        ),
-        SizedBox(height: 8),
-        Text(
-          label,
-          style: TextStyle(fontSize: 16),
-        ),
-      ],
-    );
   }
 }
 
