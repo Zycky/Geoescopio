@@ -55,6 +55,8 @@ flutter:
     - assets/img/memorias-climaticas.png
     - assets/img/presentes-climaticos.png
     - assets/img/futuros-climaticos.png
+    - assets/img/iniciativas_regenerativas.png
+    - assets/img/pequeñas_manos_pequeñas_lombrices.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/.

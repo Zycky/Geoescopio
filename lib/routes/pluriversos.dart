@@ -57,19 +57,19 @@ class PluriversosPage extends StatelessWidget {
 final pages = [
   const PageData(
     
-    title: "Pluriversos",
+    title: "Colaboración en Iniciativas Regenerativas.",
     bgColor: Color.fromARGB(255, 255, 255, 255),
     textColor: Color.fromARGB(255, 0, 0, 0),
     videoUrl: "https://www.youtube.com/watch?v=gk_oLd69c8Q&t=6s",
-    imagePath: "assets/img/ministerio.png",
+    imagePath: "assets/img/iniciativas_regenerativas.png",
   ),
   const PageData(
     
-    title: "...",
+    title: "Pequeñas manos y pequeñas lombrices mejoran el clima.",
     bgColor: Color.fromARGB(255, 173, 173, 173),
     textColor: Color.fromARGB(255, 0, 0, 0),
     videoUrl: "https://www.youtube.com/watch?v=BIV5jstmObw&t=4s",
-    imagePath: "assets/img/concursoanillos.png",
+    imagePath: "assets/img/pequeñas_manos_pequeñas_lombrices.png",
   ),
   // Añadir más páginas según sea necesario
 ];
