@@ -1,45 +1,26 @@
 import 'package:concentric_transition/concentric_transition.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
-final pages = [
-  const PageData(
-    icon: Icons.arrow_forward,
-    title: "Pluriversos",
-    bgColor: Color.fromARGB(255, 255, 255, 255),
-    textColor: Color.fromARGB(255, 0, 0, 0),
-  ),
-  const PageData(
-    icon: Icons.arrow_forward,
-    title: "...",
-    bgColor: Color.fromARGB(255, 151, 151, 151),
-    textColor: Color.fromARGB(255, 0, 0, 0),
-  ),
-  const PageData(
-    icon: Icons.arrow_forward,
-    title: "...",
-    bgColor: Color.fromARGB(255, 255, 255, 255),
-    textColor: Color.fromARGB(255, 0, 0, 0),
-  ),
-  const PageData(
-    icon: Icons.arrow_forward,
-    title: ".",
-    bgColor: Color.fromARGB(255, 151, 151, 151),
-    textColor: Color.fromARGB(255, 0, 0, 0),
-  ),
-  const PageData(
-    icon: Icons.arrow_forward,
-    title: ".",
-    bgColor: Color.fromARGB(255, 255, 255, 255),
-    textColor: Color.fromARGB(255, 0, 0, 0),
-  ),
-  const PageData(
-    icon: Icons.arrow_forward,
-    title: ".",
-    bgColor: Color.fromARGB(255, 151, 151, 151),
-    textColor: Color.fromARGB(255, 0, 0, 0),
-  ),
-];
+class PageData {
+  final String? title;
+  final IconData? icon;
+  final Color bgColor;
+  final Color textColor;
+  final String? videoUrl; // URL del video de YouTube
+  final String? imageUrl; // URL de la imagen
+
+  const PageData({
+    this.title,
+    this.icon,
+    this.bgColor = Colors.white,
+    this.textColor = Colors.black,
+    this.videoUrl,
+    this.imageUrl,
+  });
+}
+
 
 class PluriversosPage extends StatelessWidget {
   const PluriversosPage({super.key});
@@ -77,51 +58,81 @@ class PluriversosPage extends StatelessWidget {
   }
 }
 
-class PageData {
-  final String? title;
-  final IconData? icon;
-  final Color bgColor;
-  final Color textColor;
-
-  const PageData({
-    this.title,
-    this.icon,
-    this.bgColor = Colors.white,
-    this.textColor = Colors.black,
-  });
-}
-
+final pages = [
+  const PageData(
+    icon: Icons.arrow_forward,
+    title: "Pluriversos",
+    bgColor: Color.fromARGB(255, 255, 255, 255),
+    textColor: Color.fromARGB(255, 0, 0, 0),
+    videoUrl: "https://www.youtube.com/watch?v=VIDEO_ID1",
+    imageUrl: "https://example.com/image1.jpg",
+  ),
+  const PageData(
+    icon: Icons.arrow_forward,
+    title: "...",
+    bgColor: Color.fromARGB(255, 173, 173, 173),
+    textColor: Color.fromARGB(255, 0, 0, 0),
+    videoUrl: "https://www.youtube.com/watch?v=VIDEO_ID2",
+    imageUrl: "https://example.com/image2.jpg",
+  ),
+  // Añadir más páginas según sea necesario
+];
 class _Page extends StatelessWidget {
   final PageData page;
 
   const _Page({required this.page});
 
+  Future<void> _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          padding: const EdgeInsets.all(10.0),
-          margin: const EdgeInsets.all(10.0),
-          decoration:
-              BoxDecoration(shape: BoxShape.circle, color: page.textColor),
-          child: Icon(
-            page.icon,
-            size: screenHeight * 0.1,
-            color: page.bgColor,
+    return GestureDetector(
+      onTap: () {
+        if (page.videoUrl != null) {
+          _launchURL(page.videoUrl!);
+        }
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(10.0),
+            margin: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: page.textColor,
+            ),
+            child: page.imageUrl != null
+                ? Image.network(
+                    page.imageUrl!,
+                    width: screenHeight * 0.1,
+                    height: screenHeight * 0.1,
+                    fit: BoxFit.cover,
+                  )
+                : Icon(
+                    page.icon,
+                    size: screenHeight * 0.1,
+                    color: page.bgColor,
+                  ),
           ),
-        ),
-        Text(
-          page.title ?? "",
-          style: TextStyle(
+          Text(
+            page.title ?? "",
+            style: TextStyle(
               color: page.textColor,
               fontSize: screenHeight * 0.035,
-              fontWeight: FontWeight.bold),
-          textAlign: TextAlign.center,
-        ),
-      ],
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
     );
   }
 }
