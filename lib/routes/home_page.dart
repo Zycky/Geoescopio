@@ -32,19 +32,19 @@ class HomePage extends StatelessWidget {
                   children: [
                     _buildImageButton(
                       imagePath: 'assets/img/memorias-climaticas.png', // Ruta a la imagen para Aplicación 1
-                      label: 'Memorias Climáticas',
+                      label: 'Memorias\nClimaticas',
                       color: const Color.fromARGB(0, 68, 137, 255), // Color de fondo del contenedor
                       url: 'https://tageo.maps.arcgis.com/apps/instant/slider/index.html?appid=8c8bb3b4c62b4707b93f64cd40bfb3dd', // URL para Aplicación 1
                     ),
                     _buildImageButton(
                       imagePath: 'assets/img/presentes-climaticos.png', // Ruta a la imagen para Aplicación 2
-                      label: 'Presentes Climáticos',
+                      label: 'Presentes\nClimáticos',
                       color: const Color.fromARGB(0, 105, 240, 175), // Color de fondo del contenedor
                       url: 'https://google.com', // URL para Aplicación 2
                     ),
                     _buildImageButton(
                       imagePath: 'assets/img/futuros-climaticos.png', // Ruta a la imagen para Aplicación 3
-                      label: 'Futuros Climáticos',
+                      label: 'Futuros\nClimáticos',
                       color: const Color.fromARGB(0, 255, 82, 82), // Color de fondo del contenedor
                       url: 'https://google.com', // URL para Aplicación 3
                     ),
@@ -66,7 +66,7 @@ class HomePage extends StatelessWidget {
     required String url,
   }) {
     return Container(
-      padding: EdgeInsets.all(16), // Espaciado interno
+      padding: EdgeInsets.all(8), // Espaciado interno
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(8), // Esquinas redondeadas
@@ -86,8 +86,8 @@ class HomePage extends StatelessWidget {
             onTap: () => _launchURL(url), // Abre la URL cuando se toca la imagen
             child: Image.asset(
               imagePath,
-              width: 150, // Ajusta el tamaño de la imagen
-              height: 150, // Ajusta el tamaño de la imagen
+              width: 160, // Ajusta el tamaño de la imagen
+              height: 160, // Ajusta el tamaño de la imagen
             ),
           ),
           SizedBox(height: 8),

@@ -66,7 +66,7 @@ final pages = [
   const PageData(
     
     title: "Pequeñas manos y pequeñas lombrices mejoran el clima.",
-    bgColor: Color.fromARGB(255, 173, 173, 173),
+    bgColor: Color.fromARGB(255, 255, 255, 255),
     textColor: Color.fromARGB(255, 0, 0, 0),
     videoUrl: "https://www.youtube.com/watch?v=BIV5jstmObw&t=4s",
     imagePath: "assets/img/pequeñas_manos_pequeñas_lombrices.png",
@@ -102,7 +102,7 @@ class _Page extends StatelessWidget {
             padding: const EdgeInsets.all(50.0),
             margin: const EdgeInsets.all(50.0),
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
+              shape: BoxShape.rectangle,
               color: page.textColor,
             ),
             child: page.imagePath != null
