@@ -5,19 +5,19 @@ import 'package:url_launcher/url_launcher.dart';
 
 class PageData {
   final String? title;
-  final IconData? icon;
+ 
   final Color bgColor;
   final Color textColor;
   final String? videoUrl; // URL del video de YouTube
-  final String? imageUrl; // URL de la imagen
+  final String? imagePath; // URL de la imagen
 
   const PageData({
     this.title,
-    this.icon,
+    
     this.bgColor = Colors.white,
     this.textColor = Colors.black,
     this.videoUrl,
-    this.imageUrl,
+    this.imagePath,
   });
 }
 
@@ -34,10 +34,6 @@ class PluriversosPage extends StatelessWidget {
         radius: screenWidth * 0.1,
         nextButtonBuilder: (context) => Padding(
           padding: const EdgeInsets.only(left: 1), // visual center
-          child: Icon(
-            Icons.navigate_next,
-            size: screenWidth * 0.1,
-          ),
         ),
         // enable itemcount to disable infinite scroll
         // itemCount: pages.length,
@@ -60,20 +56,20 @@ class PluriversosPage extends StatelessWidget {
 
 final pages = [
   const PageData(
-    icon: Icons.arrow_forward,
+    
     title: "Pluriversos",
     bgColor: Color.fromARGB(255, 255, 255, 255),
     textColor: Color.fromARGB(255, 0, 0, 0),
-    videoUrl: "https://www.youtube.com/watch?v=VIDEO_ID1",
-    imageUrl: "https://example.com/image1.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=gk_oLd69c8Q&t=6s",
+    imagePath: "assets/img/ministerio.png",
   ),
   const PageData(
-    icon: Icons.arrow_forward,
+    
     title: "...",
     bgColor: Color.fromARGB(255, 173, 173, 173),
     textColor: Color.fromARGB(255, 0, 0, 0),
-    videoUrl: "https://www.youtube.com/watch?v=VIDEO_ID2",
-    imageUrl: "https://example.com/image2.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=BIV5jstmObw&t=4s",
+    imagePath: "assets/img/concursoanillos.png",
   ),
   // Añadir más páginas según sea necesario
 ];
@@ -103,25 +99,21 @@ class _Page extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(50.0),
+            margin: const EdgeInsets.all(50.0),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: page.textColor,
             ),
-            child: page.imageUrl != null
+            child: page.imagePath != null
                 ? Image.network(
-                    page.imageUrl!,
-                    width: screenHeight * 0.1,
-                    height: screenHeight * 0.1,
+                    page.imagePath!,
+                    width: screenHeight * 0.3,
+                    height: screenHeight * 0.3,
                     fit: BoxFit.cover,
                   )
-                : Icon(
-                    page.icon,
-                    size: screenHeight * 0.1,
-                    color: page.bgColor,
+                    : SizedBox.shrink(), // Añadir un widget de sustitución si no hay imagePath
                   ),
-          ),
           Text(
             page.title ?? "",
             style: TextStyle(
