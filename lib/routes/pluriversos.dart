@@ -2,6 +2,8 @@ import 'package:concentric_transition/concentric_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+
+
 class PageData {
   final String? title;
   final Color bgColor;
@@ -48,16 +50,32 @@ final pages = [
     title: "Colaboración en Iniciativas Regenerativas.",
     bgColor: Color.fromARGB(255, 255, 255, 255),
     textColor: Color.fromARGB(255, 0, 0, 0),
-    videoUrl: "https://www.youtube.com/watch?v=gk_oLd69c8Q&t=6s",
+    videoUrl: "https://www.youtube.com/watch?v=gk_oLd69c8Q&t",
     imagePath: "assets/img/iniciativas_regenerativas.png",
   ),
   const PageData(
     title: "Pequeñas manos y pequeñas lombrices mejoran el clima.",
     bgColor: Color.fromARGB(255, 255, 255, 255),
     textColor: Color.fromARGB(255, 0, 0, 0),
-    videoUrl: "https://www.youtube.com/watch?v=BIV5jstmObw&t=4s",
+    videoUrl: "https://www.youtube.com/watch?v=BIV5jstmObw&t",
     imagePath: "assets/img/pequeñas_manos_pequeñas_lombrices.png",
   ),
+  const PageData(
+    title: "Exploración sonora en el río la Ligua",
+    bgColor: Color.fromARGB(255, 255, 255, 255),
+    textColor: Color.fromARGB(255, 0, 0, 0),
+    videoUrl: "https://www.youtube.com/watch?v=989l91b9B5I",
+    imagePath: "assets/img/exploracionsonora.png",
+  ),
+  const PageData(
+    title: "¿Conoces el camino con mas curvas del mundo?",
+    bgColor: Color.fromARGB(255, 255, 255, 255),
+    textColor: Color.fromARGB(255, 0, 0, 0),
+    videoUrl: "https://www.youtube.com/shorts/ryhnaBKQicc?feature=share",
+    imagePath: "assets/img/caminocurvas.png",
+  ),
+  
+
   // Añadir más páginas según sea necesario
 ];
 
@@ -77,6 +95,7 @@ class _Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
         if (page.videoUrl != null) {
@@ -87,20 +106,17 @@ class _Page extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            padding: const EdgeInsets.all(50.0),
-            margin: const EdgeInsets.all(50.0),
-            decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              color: page.textColor,
-            ),
+            padding: EdgeInsets.all(screenWidth * 0.03), // Ajusta el padding en relación al ancho de la pantalla
+            margin: EdgeInsets.all(screenWidth * 0.03), // Ajusta el margin en relación al ancho de la pantalla
             child: page.imagePath != null
-                ? Image.asset(
-                    page.imagePath!,
-                    width: screenHeight * 0.3,
-                    height: screenHeight * 0.3,
-                    fit: BoxFit.cover,
+                ? AspectRatio(
+                    aspectRatio: 1.0, // Esto asegura que la relación de aspecto sea 1:1, es decir, cuadrada
+                    child: Image.asset(
+                      page.imagePath!,
+                      fit: BoxFit.cover,
+                    ),
                   )
-                : SizedBox.shrink(), // Añadir un widget de sustitución si no hay imagePath
+                : SizedBox.shrink(), // Widget de sustitución si no hay imagePath
           ),
           Text(
             page.title ?? "",
