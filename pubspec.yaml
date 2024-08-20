@@ -59,6 +59,7 @@ flutter:
     - assets/img/pequeñas_manos_pequeñas_lombrices.png
     - assets/img/caminocurvas.png
     - assets/img/exploracionsonora.png
+    - assets/img/maximiliano.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/.

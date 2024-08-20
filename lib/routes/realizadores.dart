@@ -29,7 +29,7 @@ class RealizadoresPage extends StatelessWidget {
     Realizadores(
       nombre: 'Maximiliano Valdebenito Segura',
       descripcion: 'Desarrollador de aplicaciones usadas en Geoescopio',
-      imagenPath: 'assets/images/image2.png',
+      imagenPath: 'assets/img/maximiliano.jpg',
       enlaces: ['https://github.com/Zycky'],
     ),
     Realizadores(
