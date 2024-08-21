@@ -18,9 +18,9 @@ class HomePage extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(top: 20), // Margen superior para la imagen
               child: Image.asset(
-                'assets/img/eye1.png', // Ruta a la imagen en la parte superior
-                width: 200, // Ajusta el tamaño de la imagen
-                height: 200, // Ajusta el tamaño de la imagen
+                'assets/img/ojoreal.png', // Ruta a la imagen en la parte superior
+                width: 250, // Ajusta el tamaño de la imagen
+                height: 250, // Ajusta el tamaño de la imagen
               ),
             ),
             Expanded(
@@ -40,14 +40,14 @@ class HomePage extends StatelessWidget {
                       imagePath: 'assets/img/presentes-climaticos.png', // Ruta a la imagen para Aplicación 2
                       label: 'Presentes\nClimáticos',
                       color: const Color.fromARGB(0, 105, 240, 175), // Color de fondo del contenedor
-                      url: 'https://google.com', // URL para Aplicación 2
+                      url: 'https://tageo.maps.arcgis.com/apps/instant/interactivelegend/index.html?appid=645933a6880543faaea49f323455ef54', // URL para Aplicación 2
                     ),
-                    _buildImageButton(
-                      imagePath: 'assets/img/futuros-climaticos.png', // Ruta a la imagen para Aplicación 3
-                      label: 'Futuros\nClimáticos',
-                      color: const Color.fromARGB(0, 255, 82, 82), // Color de fondo del contenedor
-                      url: 'https://google.com', // URL para Aplicación 3
-                    ),
+                    // _buildImageButton(
+                    //   imagePath: 'assets/img/futuros-climaticos.png', // Ruta a la imagen para Aplicación 3
+                    //   label: 'Futuros\nClimáticos',
+                    //   color: const Color.fromARGB(0, 255, 82, 82), // Color de fondo del contenedor
+                    //   url: 'https://google.com', // URL para Aplicación 3
+                    // ),
                   ],
                 ),
               ),

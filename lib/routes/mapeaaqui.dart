@@ -44,11 +44,11 @@ class MapeaaquiPage extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-              color: Colors.blueAccent, // Cambia el color del fondo aquí
+              color: const Color.fromARGB(62, 68, 137, 255), // Cambia el color del fondo aquí
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Text(
-              'Mediante el uso de "ArcGis Survey123" puedes colaborar con datos para seguir expandiendo la información sobre las catastrofes naturales',
+              'Únete al mapeo colaborativo de Pluriversos Climáticos. Comparte tus perspectivas y experiencias para explorar juntos territorios alternativos frente al cambio climático. ¡Participa y construyamos futuros posibles!',
               style: TextStyle(fontSize: 24, color: Colors.white),
               textAlign: TextAlign.center,
             ),
@@ -56,7 +56,7 @@ class MapeaaquiPage extends StatelessWidget {
           SizedBox(height: 16.0), // Espacio entre el texto y el botón
           // Botón que redirige a un enlace
           ElevatedButton(
-            onPressed: () => _launchURL('https://www.pluriversosclimaticos.cl'),
+            onPressed: () => _launchURL('https://survey123.arcgis.com/share/9c416dad489b4bf5a5a2e73c62d6e0f1'),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange, // Cambia el color del botón aquí
               padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),

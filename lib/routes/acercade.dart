@@ -78,12 +78,12 @@ class AcercadePage extends StatelessWidget {
               ),
               SizedBox(height: 20.0),
               ElevatedButton(
-                onPressed: () => _launchURL('https://pluriversosclimaticos.cl'), // Reemplaza con la URL deseada
-                child: Text('Visita pluriversos'),
+                onPressed: () => _launchURL('https://pluriversosclimaticos.cl'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orange, // Cambia el color del botón aquí
                   padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-            )
+            ), // Reemplaza con la URL deseada
+                child: Text('Visita pluriversos')
               ),
             ],
           ),
