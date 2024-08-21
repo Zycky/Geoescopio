@@ -34,7 +34,7 @@ class MapeaaquiPage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0), // Espacio horizontal alrededor de la imagen
                   child: Image.asset(
-                    'assets/img/mapasatelital.jpg', // Reemplaza con la URL de tu imagen
+                    'assets/img/iconomapa.png', // Reemplaza con la URL de tu imagen
                     width: 280,
                     height: 250,
                   ),
