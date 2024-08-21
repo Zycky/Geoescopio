@@ -4,7 +4,7 @@ import 'package:url_launcher/url_launcher.dart'; // Asegúrate de agregar esta d
 class MapeaaquiPage extends StatelessWidget {
 
   // Método para abrir un enlace en el navegador
-    void _launchURL(String url) async {
+  void _launchURL(String url) async {
     final Uri uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
@@ -22,29 +22,33 @@ class MapeaaquiPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          // Espacio superior para empujar el contenido hacia abajo
           Spacer(), // Empuja el contenido hacia abajo
+
           // Fila de imágenes centrada
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // Imagen a la izquierda
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0), // Espacio horizontal alrededor de cada imagen
-                child: Image.asset(
-                  'assets/img/mapasatelital.jpg', // Reemplaza con la URL de tu imagen
-                  width: 280,
-                  height: 250,
+              // Imagen que redirige al hacer clic
+              GestureDetector(
+                onTap: () => _launchURL('https://survey123.arcgis.com/share/9c416dad489b4bf5a5a2e73c62d6e0f1'), // URL que se abrirá al hacer clic
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0), // Espacio horizontal alrededor de la imagen
+                  child: Image.asset(
+                    'assets/img/mapasatelital.jpg', // Reemplaza con la URL de tu imagen
+                    width: 280,
+                    height: 250,
+                  ),
                 ),
               ),
             ],
           ),
-          SizedBox(height: 32.0), // Espacio entre las imágenes y el contenido
+          SizedBox(height: 32.0), // Espacio entre la imagen y el texto
+
           // Cuadro de texto con fondo colorido
           Container(
             padding: EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-              color: const Color.fromARGB(62, 68, 137, 255), // Cambia el color del fondo aquí
+              color: Color.fromARGB(75, 0, 0, 0), // Cambia el color del fondo aquí
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Text(
@@ -53,26 +57,11 @@ class MapeaaquiPage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          SizedBox(height: 16.0), // Espacio entre el texto y el botón
-          // Botón que redirige a un enlace
-          ElevatedButton(
-            onPressed: () => _launchURL('https://survey123.arcgis.com/share/9c416dad489b4bf5a5a2e73c62d6e0f1'),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange, // Cambia el color del botón aquí
-              padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-            ),
-            child: Text('Ir al enlace'),
-          ),
-          SizedBox(height: 32.0), // Espacio adicional en la parte inferior
+          
+
+          SizedBox(height: 40.0), // Espacio adicional en la parte inferior
         ],
       ),
     );
   }
 }
-
-
-
-
-
-
- //'Mediante el uso de "ArcGis Survey123" puedes colaborar con datos para seguir expandiendo la información sobre las catastrofes naturales ',
