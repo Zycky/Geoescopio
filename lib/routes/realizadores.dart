@@ -35,7 +35,7 @@ class RealizadoresPage extends StatelessWidget {
     Realizadores(
       nombre: 'Matias Basáez Peralta',
       descripcion: 'Desarrollador de aplicaciones usadas en Geoescopio',
-      imagenPath: 'assets/images/image2.png',
+      imagenPath: 'assets/img/mati.jpg',
       enlaces: ['https://github.com/Smooth2044'],
     ),
     // Realizadores(

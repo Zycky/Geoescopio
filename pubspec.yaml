@@ -62,7 +62,8 @@ flutter:
     - assets/img/maximiliano.jpg
     - assets/img/ojoreal.png
     - assets/img/iconomapa.png
-
+    - assets/img/matias.png
+    - assets/img/mati.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/.
 
