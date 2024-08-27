@@ -72,6 +72,13 @@ final pages = [
     videoUrl: "https://www.youtube.com/shorts/ryhnaBKQicc?feature=share",
     imagePath: "assets/img/caminocurvas.png",
   ),
+  const PageData(
+    title: "Sabiduría Aymara: Alimentación y Cambio Climático",
+    bgColor: Color.fromARGB(95, 154, 19, 167),
+    textColor: Color.fromARGB(255, 0, 0, 0),
+    videoUrl: "https://www.youtube.com/watch?v=kP0YO_J2wYI",
+    imagePath: "assets/img/sabiduria aymara.png",
+  ),
 ];
 
 class _Page extends StatelessWidget {
