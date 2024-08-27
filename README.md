@@ -27,7 +27,8 @@ Framework: ![Flutter](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThi7
   flutter pub get
   flutter doctor
 ```
-
+* Al momento de agregar una imagen a assets/img tambien se debe insertar esta ruta en pubsec.yaml donde se detallan los assets a utilizar
+  
 
 
 
