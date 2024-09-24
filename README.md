@@ -27,7 +27,8 @@ Framework: ![Flutter](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThi7
   flutter pub get
   flutter doctor
 ```
-
+* Al momento de agregar una imagen a assets/img tambien se debe insertar esta ruta en pubsec.yaml donde se detallan los assets a utilizar
+  
 
 
 
@@ -43,3 +44,7 @@ Framework: ![Flutter](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThi7
 * SidebarX: https://pub.dev/packages/sidebarx
 * Url_Launcher: https://pub.dev/packages/url_launcher
 * Concentric Page Transition: https://pub.dev/documentation/concentric_transition/latest/
+
+* ## Demo
+
+https://zycky.github.io/Geoescopio/
