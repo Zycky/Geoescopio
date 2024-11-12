@@ -38,7 +38,7 @@ android {
         applicationId = "com.example.geoescopio"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdk = flutter.minSdkVersion
+        minSdkVersion 19
         targetSdk = flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
@@ -51,7 +51,13 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
+
+    dependencies {
+    implementation 'androidx.webkit:webkit:1.4.0'  // Asegúrate de incluir esta dependencia
+  }
 }
+
+
 
 flutter {
     source = "../.."

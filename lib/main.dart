@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
-import 'routes/home_page.dart'; // Importa la página principal
-import 'routes/acercade.dart';     // Importa la nueva página 1
-import 'routes/realizadores.dart';     // Importa la nueva página 2
+import 'routes/home_page.dart'; 
+import 'routes/acercade.dart';     
+import 'routes/realizadores.dart';    
 import 'routes/pluriversos.dart'; 
 import 'routes/mapeaaqui.dart'; 
+import 'routes/visor.dart';
 
 void main() {
   runApp(const MyApp());
@@ -96,6 +97,9 @@ class MyHomePageState extends State<MyHomePage> {
                                 case 4:
                                   _key.currentState?.closeDrawer();
                                   return RealizadoresPage(); // Muestra la página Realizadores
+                                case 5:
+                                  _key.currentState?.closeDrawer();
+                                  return VisorPage(); // Muestra la página Realizadores  
                                 default:
                                   return HomePage(); // Página predeterminada
                               }
@@ -161,6 +165,7 @@ class SideBarXExample extends StatelessWidget {
         SidebarXItem(icon: Icons.diversity_3, label: 'Acerca de'),
         SidebarXItem(icon: Icons.map, label: 'Pluriversos'),
         SidebarXItem(icon: Icons.groups, label: 'Realizadores'),
+        SidebarXItem(icon: Icons.vrpano, label: 'Visores'),
       ],
     );
   }

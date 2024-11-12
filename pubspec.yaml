@@ -12,6 +12,9 @@ dependencies:
   concentric_transition: ^1.0.3
   video_player: ^2.9.1
   flutter_launcher_icons: ^0.13.1
+  webview_flutter: ^4.10.0
+  flutter_inappwebview: ^6.1.5
+  
 
 dev_dependencies:
   flutter_test:
