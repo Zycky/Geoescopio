@@ -16,11 +16,12 @@ class _VisorPageState extends State<VisorPage> {
     super.initState();
 
     // Establecemos las propiedades del iframe
-    _iFrameElement.style.height = '100%';
-    _iFrameElement.style.width = '100%';
+    _iFrameElement.style.height = '80%';
+    _iFrameElement.style.width = '80%';
     _iFrameElement.src =
         'https://www.google.com/maps/d/embed?mid=1vjVoy1cUXuxGo47ZQuwFAI3K__hgAwk&ehbc=2E312F/';
     _iFrameElement.style.border = 'none';
+    
 
     // Registro del iframe en la plataforma
     // ignore: undefined_prefixed_name
@@ -47,7 +48,7 @@ class _VisorPageState extends State<VisorPage> {
         child: Column(
           children: [
             // Aseguramos que el iframe ocupe el tamaño adecuado
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.9, // Ajuste de altura
               child: _iframeWidget,

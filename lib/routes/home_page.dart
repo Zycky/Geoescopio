@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
                       imagePath: 'assets/img/memorias-climaticas.png', // Ruta a la imagen para Aplicación 1
                       label: 'Memorias\nClimáticas',
                       color: const Color.fromARGB(0, 68, 137, 255), // Color de fondo del contenedor
-                      url: 'https://tageo.maps.arcgis.com/apps/instant/slider/index.html?appid=8c8bb3b4c62b4707b93f64cd40bfb3dd', // URL para Aplicación 1
+                      url: 'https://tageo.maps.arcgis.com/apps/mapviewer/index.html?webmap=71dba50fd7ec41fab04e941d23f45c32', // URL para Aplicación 1
                     ),
                     _buildImageButton(
                       imagePath: 'assets/img/presentes-climaticos.png', // Ruta a la imagen para Aplicación 2
